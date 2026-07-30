@@ -113,15 +113,15 @@ WechatMarkdownEdit.prototype.initMarkdownIt = function () {
     highlight: function (str, lang) {
       if (lang && hljs.getLanguage(lang)) {
         try {
-          return '<pre class="hljs">' +
-            hljs.highlight(lang, str, true).value +
+          return '<pre class="hljs" style="white-space: pre-wrap;">' +
+            hljs.highlight(lang, str, true).value.replace(/\n/g, '<br>') +
             '</pre>';
         } catch (__) {
           return __
         }
       }
 
-      return '<pre class="hljs">' + md.utils.escapeHtml(str) + '</pre>';
+      return '<pre class="hljs" style="white-space: pre-wrap;">' + md.utils.escapeHtml(str).replace(/\n/g, '<br>') + '</pre>';
     }
   });
 

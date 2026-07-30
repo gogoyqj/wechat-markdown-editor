@@ -1750,8 +1750,8 @@ default_rules.code_inline = function (tokens, idx, options, env, slf) {
 default_rules.code_block = function (tokens, idx, options, env, slf) {
   var token = tokens[idx];
 
-  return  '<pre class="code-block"' + slf.renderAttrs(token) + '><code>' +
-          escapeHtml(tokens[idx].content) +
+  return  '<pre class="code-block" style="white-space: pre-wrap;"' + slf.renderAttrs(token) + '><code>' +
+          escapeHtml(tokens[idx].content).replace(/\n/g, '<br>') +
           '</code></pre>\n';
 };
 
